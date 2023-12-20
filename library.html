@@ -1,0 +1,138 @@
+<!-- library.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_library.css">
+    <title>Библиотека</title>
+</head>
+
+<body>
+<div class="header-container">
+    <div class="catalog-buttons">
+        <h1>Geisel Library</h1>
+        <button class="catalog-button" onclick="scrollToBooks()">Каталог</button>
+        <button class="catalog-button" onclick="scrollToAboutUs()">Про нас</button>
+        <!-- Добавляем кнопку "Корзина" -->
+        <button class="catalog-button" onclick="goToCart()">Корзина</button>
+    </div>
+</div>
+
+<div class="info-container">
+    <p class="welcome-text"><h1>Чому саме вибирають наші книжки?</h1></p>
+</div>
+
+<div class="welcome-container">
+    <!-- Блок с тремя картинками и подписью -->
+    <div class="image-with-caption">
+        <img src="image1.png">
+        <p class="image-caption">Якість контенту: Наші книжки здебільшого відзначаються високою якістю контенту. Вони можуть містити цікаву інформацію, добре розроблені сюжети або докладні дослідження, що привертає читача і задовольняє його інтелектуальні потреби.</p>
+    </div>
+    <div class="image-with-caption">
+        <img src="image2.png">
+        <p class="image-caption">Авторитет авторів: Якщо наші книги написані відомими і досвідченими авторами, то читачі можуть вибирати їх через авторитет і репутацію цих письменників. Успішні автори часто здатні привертати увагу своєю роботою, і читачі можуть вважати їхні твори більш привабливими.</p>
+    </div>
+    <div class="image-with-caption">
+        <img src="image3.png">
+        <p class="image-caption">Актуальність теми: Якщо книги стосуються актуальних тем, які зацікавлюють або турбують читача у даному періоді часу, вони стають більш привабливими. Наприклад, книги про сучасні проблеми, нові технології або суспільні зміни можуть привертати увагу читачів, бажаючих розширити свої знання про сучасний світ.</p>
+    </div>
+
+    <p class="welcome-text">Добро пожаловать в мир знаний и приключений!</p>
+</div>
+
+<div class="books-container">
+    <!-- Контент с книгами -->
+    <div class="book">
+        <img src="book1.jpg" alt="Книга 1">
+        <h2>Harry Potter 1 - Harry Potter E A Pedra Filosofal</h2>
+        <p>6.99€</p>
+        <!-- Добавляем кнопку "Купить" с атрибутом data-book-id -->
+        <button class="buy-button" data-book-id="1" onclick="addToCart(1)">Купить</button>
+    </div>
+    <div class="book">
+        <img src="book2.jpg" alt="Книга 2">
+        <h2>Harry Potter and The Prisoner of Azkaban</h2>
+        <p>9.56€</p>
+        <button class="buy-button" data-book-id="2" onclick="addToCart(2)">Купить</button>
+    </div>
+    <div class="book">
+        <img src="book3.jpg" alt="Книга 3">
+        <h2>Harry Potter and The Philosopher's Stone</h2>
+        <p>13.95€</p>
+        <button class="buy-button" data-book-id="3" onclick="addToCart(3)">Купить</button>
+    </div>
+</div>
+
+<div class="lib-container">
+    <p class="welcome-text"><h1>Ми маємо власну бібліотеку!</h1></p>
+</div>
+
+<div class="photo-container">
+    <!-- Блок с тремя картинками и подписью -->
+    <div class="image-with-capti">
+        <img src="photo1.jpg">
+    </div>
+    <div class="image-with-capti">
+        <img src="photo2.jpg">
+    </div>
+    <div class="image-with-capti">
+        <img src="photo3.jpg">
+    </div>
+</div>
+
+<div class="about-us-container" id="about-us-container">
+    <h1>Про нас</h1>
+    <p>"Бібліотека Geisel - це унікальний простір, де кожен читач може знайти щось особливе. Ми пишаємося різноманіттям нашої колекції, яка включає як класичні твори, так і новинки сучасної літератури.
+
+        Ми розташовані в самому серці міста, надаючи затишне місце для читання, навчання та обміну літературними враженнями. Завітайте до нашої бібліотеки та поглибіться в світі слова та уяви.
+
+        Ми знаходимося в центрі Одеси."</p>
+    <p></p>
+</div>
+
+
+<script>
+    // Функция для добавления книги в корзину
+    function addToCart(bookId) {
+        // Предположим, у вас есть массив книг с информацией, включая цену
+        const books = [
+            { id: 1, title: "Harry Potter 1 - Harry Potter E A Pedra Filosofal", price: 6.99 },
+            { id: 2, title: "Harry Potter and The Prisoner of Azkaban", price: 9.56 },
+            { id: 3, title: "Harry Potter and The Philosopher's Stone", price: 13.95 }
+        ];
+
+        // Находим книгу по её идентификатору
+        const selectedBook = books.find(book => book.id === bookId);
+
+        // Получаем текущий массив корзины из Local Storage или создаем новый, если его нет
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Добавляем выбранную книгу в корзину
+        cart.push(selectedBook);
+
+        // Сохраняем обновленный массив корзины в Local Storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Выводим сообщение или что-то еще, что вы хотите сделать после добавления в корзину
+        alert(`Книга "${selectedBook.title}" добавлена в корзину!`);
+    }
+
+    function goToCart() {
+        // Переход на страницу корзины
+        window.location.href = 'cart.html';
+    }
+
+    function scrollToBooks() {
+        var booksContainer = document.querySelector('.books-container');
+        booksContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToAboutUs() {
+        document.getElementById('about-us-container').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

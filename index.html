@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+    <form id="loginForm">
+        <h1>Вхiд</h1>
+        <label for="email">Електронна пошта:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" id="loginBtn">Увiйти</button>
+        <div class="warning" id="warningMessage"></div>
+    </form>
+
+    <p>Якщо у вас немає облікового запису, ви можете <a href="register.html">зареєструватися тут</a>.</p>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Очищаем предупреждение
+                document.getElementById('warningMessage').textContent = '';
+
+                const response = await fetch('http://localhost:3000/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                // Выводим данные пользователя в консоль
+                console.log('Данные пользователя:', data.user);
+
+                // Показываем сообщение о результате
+                alert(data.message);
+
+                if (response.ok) {
+                    // Перенаправляем на домашнюю страницу или другую страницу после входа
+                    window.location.href = 'library.html';
+
+                    // Сохраняем данные пользователя в локальном хранилище
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                }
+            } catch (error) {
+                console.error('Ошибка при отправке запроса:', error);
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

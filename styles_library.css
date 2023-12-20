@@ -1,0 +1,205 @@
+/* styles_library.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container {
+    width: 100%;
+    background: linear-gradient(to top left, powderblue, pink);
+    text-align: left;
+    padding: -2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.catalog-buttons {
+    display: flex;
+    justify-content: flex-end; /* Размещаем кнопки в правой части блока */
+    align-items: center;
+}
+
+.catalog-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Добавляем отступ между кнопками */
+}
+
+.catalog-button:first-child {
+    margin-left: 0; /* Убираем отступ слева у первой кнопки */
+}
+
+.catalog-button:hover {
+    background-color: #2980b9;
+}
+
+.info-container {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 18px; /* Увеличиваем размер текста в блоке с информацией о библиотеке */
+}
+.info-container, .welcome-container {
+    margin-bottom: -20px; /* Задаем отступ снизу в 20px */
+}
+p.welcome-text {
+    color: #555;
+    margin: 0;
+}
+.welcome-container {
+    width: 95%;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-with-caption {
+    width: 48%; /* Устанавливаем ширину блока с изображением в 48% от родительского контейнера */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Добавляем отступ между изображениями */
+    overflow: hidden; /* Ограничиваем видимую область, чтобы изображение не выходило за пределы блока */
+}
+
+.image-with-caption img {
+    width: 10%; /* Устанавливаем ширину изображения в 100% от блока */
+    height: auto; /* Поддерживаем пропорции при изменении ширины */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.books-container, .welcome-container {
+    margin-bottom: 20px; /* Задаем отступ снизу в 20px */
+}
+
+.books-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book {
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 16px; /* Уменьшаем размер текста с названием книги */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+.lib-container {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 18px; /* Увеличиваем размер текста в блоке с информацией о библиотеке */
+}
+
+.photo-container {
+    width: 95%;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-with-capti {
+    width: 48%; /* Устанавливаем ширину блока с изображением в 48% от родительского контейнера */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Добавляем отступ между изображениями */
+    overflow: hidden; /* Ограничиваем видимую область, чтобы изображение не выходило за пределы блока */
+}
+
+.image-with-capti img {
+    width: 100%; /* Устанавливаем ширину изображения в 100% от блока */
+    height: auto; /* Поддерживаем пропорции при изменении ширины */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.lib-container, .photo-container {
+    margin-bottom: -20px; /* Задаем отступ снизу в 20px */
+}
+
+
+.about-us-container {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 18px; /* Увеличиваем размер текста в блоке с информацией о библиотеке */
+}
+
+
+.about-us-container, .photo-container {
+    margin-bottom: 20px; /* Задаем отступ снизу в 20px */
+}
+

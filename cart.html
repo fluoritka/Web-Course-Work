@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="style_cart.css">
+</head>
+
+<body>
+<h1>Ваша корзина</h1>
+<ul id="cart-list"></ul>
+<p id="total-price"></p>
+
+<!-- Форма для оформления заказа -->
+<form id="checkout-form">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="address">Адрес:</label>
+    <input type="text" id="address" name="address" required>
+
+    <label for="card">Номер карты:</label>
+    <input type="text" id="card" name="card" placeholder="**** **** **** ****" required>
+
+    <button type="submit">Оформить заказ</button>
+</form>
+
+<button onclick="clearCart()">Очистить корзину</button>
+<button onclick="goToLibrary()">Продолжить покупки</button>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartView() {
+        const cartList = document.getElementById('cart-list');
+        const totalPriceElement = document.getElementById('total-price');
+
+        cartList.innerHTML = "";
+
+        cart.forEach(book => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${book.title} - ${book.price}€`; // Выводим и цену книги
+            cartList.appendChild(listItem);
+        });
+
+        const totalPrice = cart.reduce((total, book) => total + book.price, 0);
+        totalPriceElement.textContent = `Общая стоимость: ${totalPrice}€`;
+    }
+
+    function clearCart() {
+        localStorage.removeItem('cart'); // Очищаем корзину в Local Storage
+        updateCartView(); // Обновляем отображение корзины
+    }
+
+    function goToLibrary() {
+        window.location.href = 'library.html';
+    }
+
+    // Обработчик события отправки формы
+    document.getElementById('checkout-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Предотвращаем отправку формы (по умолчанию)
+
+        // Здесь можно добавить логику для обработки данных заказа
+        const formData = new FormData(this);
+        const orderData = Object.fromEntries(formData.entries());
+
+        console.log('Заказ оформлен:', orderData);
+
+        // Очистим корзину после оформления заказа
+        clearCart();
+    });
+
+    updateCartView();
+</script>
+</body>
+</html>
